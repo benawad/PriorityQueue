@@ -47,7 +47,7 @@ public class PriorityQueueTest {
 	
 	public static void randomTest(PriorityQueue q){
 		Random r = new Random();
-		int numOfDoubles = Math.abs(r.nextInt(100));
+		int numOfDoubles = Math.abs(r.nextInt(1000000));
 		double[] d = new double[numOfDoubles];
 		for(int i = 0; i < numOfDoubles; i++){
 			d[i] = r.nextDouble();
@@ -68,13 +68,13 @@ public class PriorityQueueTest {
 		PriorityQueue q2 = new ThreeHeap();
 		PriorityQueue q3 = new MyPQ();
 //		testPriorityQueue(q1);
-//		testPriorityQueue(q2);
+		testPriorityQueue(q2);
 //		testPriorityQueue(q3);
-//		for(int i = 0; i < 100; i++){
+		for(int i = 0; i < 100; i++){
 //			randomTest(new BinaryHeap());
 			randomTest(new ThreeHeap());
 //			randomTest(new MyPQ());
-//		}
+		}
 	}
 
 }
