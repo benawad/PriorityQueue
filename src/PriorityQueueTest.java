@@ -1,4 +1,3 @@
-import java.awt.print.Printable;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -58,7 +57,6 @@ public class PriorityQueueTest {
 			double dq = q.deleteMin();
 			if(d[i] != dq){
 				System.out.println(d[i] + " != " + dq);
-//				System.out.println("--ERROR--");
 			}
 		}
 	}
@@ -67,13 +65,13 @@ public class PriorityQueueTest {
 		PriorityQueue q1 = new BinaryHeap();
 		PriorityQueue q2 = new ThreeHeap();
 		PriorityQueue q3 = new MyPQ();
-//		testPriorityQueue(q1);
+		testPriorityQueue(q1);
 		testPriorityQueue(q2);
-//		testPriorityQueue(q3);
+		testPriorityQueue(q3);
 		for(int i = 0; i < 100; i++){
-//			randomTest(new BinaryHeap());
+			randomTest(new BinaryHeap());
 			randomTest(new ThreeHeap());
-//			randomTest(new MyPQ());
+			randomTest(new MyPQ());
 		}
 	}
 
