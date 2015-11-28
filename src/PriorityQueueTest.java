@@ -46,7 +46,7 @@ public class PriorityQueueTest {
 	
 	public static void randomTest(PriorityQueue q){
 		Random r = new Random();
-		int numOfDoubles = Math.abs(r.nextInt(1000000));
+		int numOfDoubles = Math.abs(r.nextInt(100000));
 		double[] d = new double[numOfDoubles];
 		for(int i = 0; i < numOfDoubles; i++){
 			d[i] = r.nextDouble();
@@ -61,6 +61,44 @@ public class PriorityQueueTest {
 		}
 	}
 	
+	public static void timeTest(PriorityQueue q1, PriorityQueue q2, PriorityQueue q3, int n){
+		Random r = new Random();
+		double[] d = new double[n];
+		for(int i = 0; i < n; i++){
+			d[i] = r.nextDouble();
+		}
+		
+		System.out.println("PriorityQueue #1");
+		timeQ(q1, n, d);
+		System.out.println("PriorityQueue #2");
+		timeQ(q2, n, d);
+		System.out.println("PriorityQueue #3");
+		timeQ(q3, n, d);
+	}
+	
+	private static void timeQ(PriorityQueue q, int n, double[] d){
+		long startTime = System.currentTimeMillis();
+
+		for(int i = 0; i < n; i++){
+			q.insert(d[i]);
+		}
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("Execution time for inserting " + n + " doubles: " + (endTime - startTime) );
+		
+		long startDeleteTime = System.currentTimeMillis();
+		
+		for(int i = 0; i < n; i++){
+			q.deleteMin();
+		}
+		
+		long endDeleteTime = System.currentTimeMillis();
+		
+		System.out.println("Execution time for deleting " + n + " doubles: " + (endDeleteTime - startDeleteTime) );	
+		
+		System.out.println("Total execution time for both inserting and deleting " + n + " doubles is: " + ((endTime-startTime)+(endDeleteTime-startDeleteTime)));
+	}
+	
 	public static void main(String[] args){
 		PriorityQueue q1 = new BinaryHeap();
 		PriorityQueue q2 = new ThreeHeap();
@@ -72,7 +110,17 @@ public class PriorityQueueTest {
 			randomTest(new BinaryHeap());
 			randomTest(new ThreeHeap());
 			randomTest(new MyPQ());
+			System.out.println("Success");
 		}
+		
+		timeTest(q1, q2, q3, 10000);
+		System.out.println("--------------");
+		timeTest(q1, q2, q3, 20000);
+		System.out.println("--------------");
+		timeTest(q1, q2, q3, 50000);
+		System.out.println("--------------");
+		timeTest(q1, q2, q3, 75000);
+		
 	}
 
 }

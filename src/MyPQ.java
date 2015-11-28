@@ -21,7 +21,7 @@ public class MyPQ implements PriorityQueue {
 			throw new EmptyPQException();
 		}
 	}
-
+	
 	@Override
 	public void insert(double x) {
 		size++;
@@ -43,6 +43,7 @@ public class MyPQ implements PriorityQueue {
 		Node currentNode = head;
 		// find the node you should insert x before
 		while(currentNode.next != null && x > currentNode.next.e){
+			currentNode = currentNode.next;
 		}
 		if(currentNode.next == null){
 			currentNode.next = newNode;
